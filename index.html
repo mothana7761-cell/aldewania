@@ -1,1 +1,234 @@
+انسخ هذا الكود كامل داخل `index.html` ثم اضغط **Commit changes**:
 
+```html
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Al Diwaniya Menu</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f3eadb;
+      color: #4b2e1f;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 20px;
+      background: #fff8ee;
+    }
+
+    .logo {
+      font-size: 38px;
+      font-weight: bold;
+      color: #4b2e1f;
+    }
+
+    .sub {
+      font-size: 18px;
+      margin-top: 8px;
+      color: #8b5e3c;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 15px;
+      background: #4b2e1f;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .tabs button {
+      border: none;
+      background: #fff8ee;
+      color: #4b2e1f;
+      padding: 12px 18px;
+      border-radius: 25px;
+      font-weight: bold;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .section {
+      display: none;
+      padding: 25px 18px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 25px;
+    }
+
+    .item {
+      background: #fff8ee;
+      margin-bottom: 15px;
+      padding: 18px;
+      border-radius: 18px;
+      box-shadow: 0 5px 15px rgba(75, 46, 31, 0.12);
+    }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .price {
+      color: #8b3a1d;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .desc {
+      margin-top: 8px;
+      color: #7b5a45;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 20px;
+      background: #4b2e1f;
+      color: #fff8ee;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">الديوانية</div>
+    <div class="sub">Al Diwaniya Restaurant & Cafe</div>
+  </header>
+
+  <div class="tabs">
+    <button onclick="showSection('breakfast')">Breakfast</button>
+    <button onclick="showSection('drinks')">Drinks</button>
+    <button onclick="showSection('main')">Main Dishes</button>
+    <button onclick="showSection('dessert')">Desserts</button>
+    <button onclick="showSection('shisha')">Shisha</button>
+  </div>
+
+  <section id="breakfast" class="section active">
+    <h2>Breakfast / الفطور</h2>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Arabic Breakfast</div>
+        <div class="price">250₺</div>
+      </div>
+      <div class="desc">Cheese, olives, eggs, labneh, vegetables, bread.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Menemen</div>
+        <div class="price">140₺</div>
+      </div>
+      <div class="desc">Turkish eggs with tomato and pepper.</div>
+    </div>
+  </section>
+
+  <section id="drinks" class="section">
+    <h2>Drinks / المشروبات</h2>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Turkish Tea</div>
+        <div class="price">40₺</div>
+      </div>
+      <div class="desc">Fresh Turkish tea.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Arabic Coffee</div>
+        <div class="price">90₺</div>
+      </div>
+      <div class="desc">Traditional Arabic coffee.</div>
+    </div>
+  </section>
+
+  <section id="main" class="section">
+    <h2>Main Dishes / الأطباق الرئيسية</h2>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Grilled Chicken</div>
+        <div class="price">320₺</div>
+      </div>
+      <div class="desc">Served with rice, salad and sauce.</div>
+    </div>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Kebab Plate</div>
+        <div class="price">380₺</div>
+      </div>
+      <div class="desc">Grilled kebab with bread and salad.</div>
+    </div>
+  </section>
+
+  <section id="dessert" class="section">
+    <h2>Desserts / الحلويات</h2>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Kunafa</div>
+        <div class="price">160₺</div>
+      </div>
+      <div class="desc">Sweet cheese kunafa.</div>
+    </div>
+  </section>
+
+  <section id="shisha" class="section">
+    <h2>Shisha / الأرجيلة</h2>
+
+    <div class="item">
+      <div class="item-top">
+        <div class="name">Double Apple</div>
+        <div class="price">250₺</div>
+      </div>
+      <div class="desc">Classic shisha flavor.</div>
+    </div>
+  </section>
+
+  <footer>
+    Al Diwaniya Restaurant & Cafe<br />
+    Istanbul, Turkey
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll(".section").forEach(section => {
+        section.classList.remove("active");
+      });
+      document.getElementById(id).classList.add("active");
+    }
+  </script>
+</body>
+</html>
+```
+
+بعد الحفظ اضغط **Commit changes**.

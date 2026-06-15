@@ -7,17 +7,16 @@
 
   <style>
     :root {
-      --cream: #f5ead8;
+      --cream: #f4eadb;
       --card: #fff8ee;
       --brown: #3f2a1d;
-      --light-brown: #8b5e3c;
+      --brown2: #6f4a32;
       --gold: #b58a3b;
-      --shadow: rgba(63, 42, 29, 0.16);
+      --green: #25d366;
+      --shadow: rgba(63, 42, 29, 0.18);
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -27,88 +26,86 @@
     }
 
     header {
+      background: linear-gradient(rgba(63,42,29,.82), rgba(63,42,29,.72)),
+        url("https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1400&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
       text-align: center;
-      padding: 28px 16px 18px;
+      padding: 35px 16px 45px;
+    }
+
+    .logo {
+      width: 170px;
+      max-width: 85%;
+      border-radius: 18px;
       background: var(--card);
-      border-bottom: 1px solid rgba(63, 42, 29, 0.12);
+      padding: 8px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
     }
 
-    .logo-img {
-      width: 190px;
-      max-width: 80%;
-      border-radius: 12px;
-      margin-bottom: 8px;
+    .title {
+      font-size: 38px;
+      margin: 18px 0 6px;
+      color: #fff8ee;
     }
 
-    .brand-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin: 5px 0;
-      letter-spacing: 1px;
+    .subtitle {
+      color: #e8c987;
+      font-size: 16px;
+      letter-spacing: 2px;
     }
 
-    .brand-sub {
-      font-size: 14px;
-      color: var(--light-brown);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-    }
-
-    .top-actions {
+    .lang {
+      margin-top: 22px;
       display: flex;
-      gap: 10px;
       justify-content: center;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-top: 18px;
     }
 
-    .lang-btn {
-      border: 1px solid var(--gold);
-      background: transparent;
-      color: var(--brown);
-      padding: 9px 15px;
-      border-radius: 22px;
-      cursor: pointer;
+    .lang button {
+      border: 1px solid #e8c987;
+      background: rgba(255,255,255,.12);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 25px;
       font-weight: bold;
+      cursor: pointer;
     }
 
-    .lang-btn.active {
-      background: var(--brown);
-      color: var(--card);
-      border-color: var(--brown);
+    .lang button.active {
+      background: var(--gold);
+      border-color: var(--gold);
     }
 
-    .search-wrap {
-      max-width: 750px;
-      margin: 16px auto 0;
-      padding: 0 16px;
+    .search-box {
+      max-width: 700px;
+      margin: 22px auto 0;
     }
 
-    #searchInput {
+    .search-box input {
       width: 100%;
-      padding: 15px 18px;
-      border-radius: 28px;
-      border: 1px solid rgba(63, 42, 29, 0.2);
-      background: #fff;
+      padding: 15px 20px;
+      border-radius: 30px;
+      border: none;
       font-size: 16px;
       outline: none;
     }
 
     .tabs {
+      position: sticky;
+      top: 0;
+      z-index: 50;
       display: flex;
       gap: 10px;
       overflow-x: auto;
-      padding: 14px;
+      padding: 13px;
       background: var(--brown);
-      position: sticky;
-      top: 0;
-      z-index: 20;
       scrollbar-width: none;
     }
 
-    .tabs::-webkit-scrollbar {
-      display: none;
-    }
+    .tabs::-webkit-scrollbar { display: none; }
 
     .tabs button {
       border: none;
@@ -119,53 +116,40 @@
       font-weight: bold;
       white-space: nowrap;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
 
     .tabs button.active {
       background: var(--gold);
-      color: #fff;
+      color: white;
     }
 
     main {
-      max-width: 900px;
+      max-width: 1050px;
       margin: auto;
-      padding: 22px 16px 80px;
+      padding: 25px 15px 40px;
     }
 
-    .section {
-      display: none;
-      animation: fade 0.25s ease-in-out;
-    }
+    .section { display: none; }
+    .section.active { display: block; }
 
-    .section.active {
-      display: block;
-    }
-
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .section-title {
+    .section h2 {
       text-align: center;
-      font-size: 30px;
-      margin: 20px 0 22px;
-      color: var(--brown);
+      font-size: 32px;
+      margin: 25px 0;
     }
 
-    .items-grid {
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 15px;
     }
 
     .item {
       background: var(--card);
-      padding: 17px;
-      border-radius: 18px;
-      box-shadow: 0 7px 20px var(--shadow);
-      border: 1px solid rgba(63, 42, 29, 0.08);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: 0 8px 22px var(--shadow);
+      border: 1px solid rgba(63,42,29,.08);
     }
 
     .item-top {
@@ -181,71 +165,135 @@
       line-height: 1.35;
     }
 
-    .item-price {
-      font-size: 17px;
-      font-weight: bold;
+    .price {
       color: #8b3a1d;
+      font-weight: bold;
       white-space: nowrap;
     }
 
-    .item-desc {
+    .desc {
       margin-top: 8px;
       color: #76543f;
-      line-height: 1.55;
+      line-height: 1.6;
       font-size: 14px;
     }
 
-    .whatsapp {
-      position: fixed;
-      bottom: 18px;
-      right: 18px;
-      background: #25d366;
-      color: white;
-      border: none;
-      border-radius: 30px;
-      padding: 14px 18px;
-      font-weight: bold;
+    .contact {
+      background: var(--card);
+      padding: 35px 16px;
+      text-align: center;
+    }
+
+    .contact h2 {
+      margin-top: 0;
+      font-size: 30px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .btn {
+      display: block;
       text-decoration: none;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      z-index: 50;
+      padding: 15px 18px;
+      border-radius: 30px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .call { background: var(--brown); }
+    .wa { background: var(--green); }
+    .review { background: var(--gold); }
+    .map { background: var(--brown2); }
+    .insta { background: #c13584; }
+
+    .feedback {
+      max-width: 700px;
+      margin: 28px auto 0;
+      background: #fff;
+      padding: 18px;
+      border-radius: 20px;
+      box-shadow: 0 8px 22px var(--shadow);
+    }
+
+    .feedback textarea {
+      width: 100%;
+      height: 100px;
+      border-radius: 15px;
+      border: 1px solid #ddd;
+      padding: 14px;
+      font-size: 15px;
+      resize: none;
+      outline: none;
+    }
+
+    .feedback button {
+      margin-top: 10px;
+      width: 100%;
+      border: none;
+      background: var(--brown);
+      color: white;
+      padding: 14px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     footer {
-      text-align: center;
-      padding: 35px 18px;
       background: var(--brown);
       color: var(--card);
+      text-align: center;
+      padding: 28px 16px;
+      line-height: 1.8;
     }
 
-    footer span {
-      color: var(--gold);
+    footer strong { color: var(--gold); }
+
+    .floating-wa {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 40px;
       font-weight: bold;
+      box-shadow: 0 8px 25px rgba(0,0,0,.25);
+      z-index: 100;
     }
 
-    [dir="rtl"] .item-top {
-      flex-direction: row-reverse;
-    }
-
-    [dir="rtl"] .whatsapp {
+    [dir="rtl"] .floating-wa {
       right: auto;
-      left: 18px;
+      left: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .title { font-size: 30px; }
+      .section h2 { font-size: 27px; }
+      header { padding-top: 25px; }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <img class="logo-img" src="logo.jpeg" alt="Al Diwaniya Logo" />
-    <div class="brand-title">Al Diwaniya</div>
-    <div class="brand-sub">Cafe & Restaurant</div>
+    <img src="logo.jpeg" class="logo" alt="Al Diwaniya Logo" />
+    <h1 class="title" id="mainTitle">Al Diwaniya</h1>
+    <div class="subtitle" id="mainSub">Cafe • Restaurant • Shisha</div>
 
-    <div class="top-actions">
-      <button class="lang-btn active" onclick="setLang('en', this)">English</button>
-      <button class="lang-btn" onclick="setLang('ar', this)">العربية</button>
-      <button class="lang-btn" onclick="setLang('tr', this)">Türkçe</button>
+    <div class="lang">
+      <button class="active" onclick="setLang('en', this)">English</button>
+      <button onclick="setLang('ar', this)">العربية</button>
+      <button onclick="setLang('tr', this)">Türkçe</button>
     </div>
 
-    <div class="search-wrap">
+    <div class="search-box">
       <input id="searchInput" oninput="searchItems()" placeholder="Search in menu..." />
     </div>
   </header>
@@ -254,399 +302,261 @@
 
   <main id="menu"></main>
 
-  <a class="whatsapp" href="https://wa.me/905551234567" target="_blank">
-    WhatsApp
-  </a>
+  <section class="contact">
+    <h2 id="contactTitle">Contact Us</h2>
+
+    <div class="buttons">
+      <a class="btn call" href="tel:+905313692933">📞 Call Us</a>
+      <a class="btn wa" href="https://wa.me/905313692933" target="_blank">💬 WhatsApp</a>
+      <a class="btn review" href="https://search.google.com/local/writereview?placeid=ChIJHQ8tjZi3yhQRETskn37Cy0Q&utm_source=chatgpt.com" target="_blank">⭐ Rate Us</a>
+      <a class="btn map" href="https://www.google.com/maps/search/?api=1&query=Anfield+Cafe+Pub+Istanbul" target="_blank">📍 Find Us</a>
+      <a class="btn insta" href="https://www.instagram.com/anfileld_cafepub" target="_blank">📸 Instagram</a>
+    </div>
+
+    <div class="feedback">
+      <h3 id="feedbackTitle">Complaint / Suggestion / Compliment</h3>
+      <textarea id="feedbackText" placeholder="Write your message here..."></textarea>
+      <button onclick="sendFeedback()" id="feedbackBtn">Send Feedback on WhatsApp</button>
+    </div>
+  </section>
 
   <footer>
-    <span>Al Diwaniya</span><br />
+    <strong>Al Diwaniya</strong><br />
     Cafe & Restaurant<br />
-    Istanbul, Turkey
+    Istanbul, Turkey<br />
+    +90 531 369 29 33
   </footer>
 
+  <a class="floating-wa" href="https://wa.me/905313692933" target="_blank">WhatsApp</a>
+
   <script>
+    const phone = "905313692933";
+
+    const ui = {
+      en: {
+        title: "Al Diwaniya",
+        sub: "Cafe • Restaurant • Shisha",
+        search: "Search in menu...",
+        contact: "Contact Us",
+        feedback: "Complaint / Suggestion / Compliment",
+        placeholder: "Write your message here...",
+        send: "Send Feedback on WhatsApp"
+      },
+      ar: {
+        title: "الديوانية",
+        sub: "كافيه • مطعم • أرجيلة",
+        search: "ابحث في المنيو...",
+        contact: "تواصل معنا",
+        feedback: "شكوى / اقتراح / مدح",
+        placeholder: "اكتب رسالتك هنا...",
+        send: "إرسال الملاحظة على واتساب"
+      },
+      tr: {
+        title: "Al Diwaniya",
+        sub: "Cafe • Restaurant • Nargile",
+        search: "Menüde ara...",
+        contact: "İletişim",
+        feedback: "Şikayet / Öneri / Teşekkür",
+        placeholder: "Mesajınızı buraya yazın...",
+        send: "WhatsApp ile gönder"
+      }
+    };
+
     const menuData = [
       {
         id: "breakfast",
         names: { en: "Breakfast", ar: "الفطور", tr: "Kahvaltı" },
         items: [
-          {
-            en: "Arabic Breakfast",
-            ar: "فطور عربي",
-            tr: "Arap Kahvaltısı",
-            desc: {
-              en: "Cheese, olives, eggs, labneh, vegetables and bread.",
-              ar: "جبنة، زيتون، بيض، لبنة، خضار وخبز.",
-              tr: "Peynir, zeytin, yumurta, labne, sebze ve ekmek."
-            },
-            price: "250₺"
-          },
-          {
-            en: "Turkish Breakfast",
-            ar: "فطور تركي",
-            tr: "Türk Kahvaltısı",
-            desc: {
-              en: "Traditional Turkish breakfast plate.",
-              ar: "طبق فطور تركي تقليدي.",
-              tr: "Geleneksel Türk kahvaltı tabağı."
-            },
-            price: "280₺"
-          },
-          {
-            en: "Menemen",
-            ar: "مينيمن",
-            tr: "Menemen",
-            desc: {
-              en: "Turkish eggs with tomato and pepper.",
-              ar: "بيض تركي مع الطماطم والفلفل.",
-              tr: "Domates ve biberli Türk usulü yumurta."
-            },
-            price: "140₺"
-          },
-          {
-            en: "Omelette",
-            ar: "أومليت",
-            tr: "Omlet",
-            desc: {
-              en: "Plain or with cheese.",
-              ar: "سادة أو مع الجبنة.",
-              tr: "Sade veya peynirli."
-            },
-            price: "130₺"
-          }
+          ["Arabic Breakfast", "فطور عربي", "Arap Kahvaltısı", "Cheese, olives, eggs, labneh, vegetables and bread.", "جبنة، زيتون، بيض، لبنة، خضار وخبز.", "Peynir, zeytin, yumurta, labne, sebze ve ekmek.", "250₺"],
+          ["Turkish Breakfast", "فطور تركي", "Türk Kahvaltısı", "Traditional Turkish breakfast plate.", "طبق فطور تركي تقليدي.", "Geleneksel Türk kahvaltı tabağı.", "280₺"],
+          ["Menemen", "مينيمن", "Menemen", "Turkish eggs with tomato and pepper.", "بيض تركي مع طماطم وفلفل.", "Domates ve biberli yumurta.", "140₺"],
+          ["Omelette", "أومليت", "Omlet", "Plain or cheese omelette.", "سادة أو مع الجبنة.", "Sade veya peynirli.", "130₺"]
         ]
       },
       {
-        id: "hot_starters",
+        id: "starters",
         names: { en: "Hot Starters", ar: "مقبلات ساخنة", tr: "Sıcak Başlangıçlar" },
         items: [
-          {
-            en: "French Fries",
-            ar: "بطاطا مقلية",
-            tr: "Patates Kızartması",
-            desc: { en: "Crispy fried potatoes.", ar: "بطاطا مقلية مقرمشة.", tr: "Çıtır patates kızartması." },
-            price: "110₺"
-          },
-          {
-            en: "Cheese Rolls",
-            ar: "رولات الجبنة",
-            tr: "Peynirli Sigara Böreği",
-            desc: { en: "Fried pastry with cheese.", ar: "عجينة مقلية محشوة بالجبنة.", tr: "Peynir dolgulu kızarmış börek." },
-            price: "150₺"
-          },
-          {
-            en: "Chicken Wings",
-            ar: "أجنحة دجاج",
-            tr: "Tavuk Kanat",
-            desc: { en: "Served with sauce.", ar: "تقدم مع الصوص.", tr: "Sos ile servis edilir." },
-            price: "220₺"
-          }
+          ["French Fries", "بطاطا مقلية", "Patates Kızartması", "Crispy fried potatoes.", "بطاطا مقلية مقرمشة.", "Çıtır patates kızartması.", "110₺"],
+          ["Cheese Rolls", "رولات الجبنة", "Peynirli Börek", "Fried pastry with cheese.", "عجينة مقلية محشوة بالجبنة.", "Peynirli kızarmış börek.", "150₺"],
+          ["Chicken Wings", "أجنحة دجاج", "Tavuk Kanat", "Served with sauce.", "تقدم مع الصوص.", "Sos ile servis edilir.", "220₺"]
         ]
       },
       {
-        id: "cold_meze",
+        id: "meze",
         names: { en: "Cold Meze", ar: "مقبلات باردة", tr: "Soğuk Mezeler" },
         items: [
-          {
-            en: "Hummus",
-            ar: "حمص",
-            tr: "Humus",
-            desc: { en: "Classic chickpea dip.", ar: "حمص كلاسيكي.", tr: "Klasik nohut mezesi." },
-            price: "120₺"
-          },
-          {
-            en: "Mutabbal",
-            ar: "متبل",
-            tr: "Patlıcan Ezmesi",
-            desc: { en: "Eggplant with tahini.", ar: "باذنجان مع الطحينة.", tr: "Tahinli patlıcan ezmesi." },
-            price: "130₺"
-          },
-          {
-            en: "Labneh",
-            ar: "لبنة",
-            tr: "Labne",
-            desc: { en: "Creamy strained yogurt.", ar: "لبنة كريمية.", tr: "Süzme yoğurt." },
-            price: "110₺"
-          }
+          ["Hummus", "حمص", "Humus", "Classic chickpea dip.", "حمص كلاسيكي.", "Klasik nohut mezesi.", "120₺"],
+          ["Mutabbal", "متبل", "Patlıcan Ezmesi", "Eggplant with tahini.", "باذنجان مع الطحينة.", "Tahinli patlıcan ezmesi.", "130₺"],
+          ["Labneh", "لبنة", "Labne", "Creamy strained yogurt.", "لبنة كريمية.", "Süzme yoğurt.", "110₺"]
         ]
       },
-            {
+      {
+        id: "salads",
+        names: { en: "Salads", ar: "السلطات", tr: "Salatalar" },
+        items: [
+          ["Caesar Salad", "سلطة سيزر", "Sezar Salata", "Lettuce, chicken, parmesan and sauce.", "خس، دجاج، بارميزان وصوص.", "Marul, tavuk, parmesan ve sos.", "240₺"],
+          ["Arabic Salad", "سلطة عربية", "Arap Salatası", "Fresh vegetables with lemon dressing.", "خضار طازجة مع الليمون.", "Taze sebzeler ve limon sosu.", "150₺"]
+        ]
+      },
+      {
         id: "burgers",
         names: { en: "Burgers", ar: "البرغر", tr: "Burgerler" },
         items: [
-          {
-            en: "Classic Burger",
-            ar: "برغر كلاسيك",
-            tr: "Klasik Burger",
-            desc: {
-              en: "Beef burger with fries.",
-              ar: "برغر لحم مع بطاطا.",
-              tr: "Patates ile dana burger."
-            },
-            price: "320₺"
-          },
-          {
-            en: "Chicken Burger",
-            ar: "برغر دجاج",
-            tr: "Tavuk Burger",
-            desc: {
-              en: "Crispy chicken burger.",
-              ar: "برغر دجاج مقرمش.",
-              tr: "Çıtır tavuk burger."
-            },
-            price: "290₺"
-          }
+          ["Classic Burger", "برغر كلاسيك", "Klasik Burger", "Beef burger with fries.", "برغر لحم مع بطاطا.", "Patates ile dana burger.", "320₺"],
+          ["Chicken Burger", "برغر دجاج", "Tavuk Burger", "Crispy chicken burger.", "برغر دجاج مقرمش.", "Çıtır tavuk burger.", "290₺"]
         ]
       },
-
       {
         id: "pizza",
         names: { en: "Pizza & Pide", ar: "بيتزا وبيدا", tr: "Pizza ve Pide" },
         items: [
-          {
-            en: "Margherita Pizza",
-            ar: "بيتزا مارغريتا",
-            tr: "Margherita Pizza",
-            desc: {
-              en: "Mozzarella and tomato sauce.",
-              ar: "جبنة موزاريلا وصلصة طماطم.",
-              tr: "Mozzarella ve domates sosu."
-            },
-            price: "340₺"
-          },
-          {
-            en: "Turkish Pide",
-            ar: "بيدا تركية",
-            tr: "Türk Pidesi",
-            desc: {
-              en: "Traditional Turkish pide.",
-              ar: "بيدا تركية تقليدية.",
-              tr: "Geleneksel Türk pidesi."
-            },
-            price: "300₺"
-          }
+          ["Margherita Pizza", "بيتزا مارغريتا", "Margherita Pizza", "Mozzarella and tomato sauce.", "جبنة موزاريلا وصلصة طماطم.", "Mozzarella ve domates sosu.", "340₺"],
+          ["Turkish Pide", "بيدا تركية", "Türk Pidesi", "Traditional Turkish pide.", "بيدا تركية تقليدية.", "Geleneksel Türk pidesi.", "300₺"]
         ]
       },
-
       {
         id: "kebab",
-        names: { en: "Kebabs", ar: "المشاوي والكباب", tr: "Kebaplar" },
+        names: { en: "Kebabs & Grill", ar: "الكباب والمشاوي", tr: "Kebap ve Izgara" },
         items: [
-          {
-            en: "Adana Kebab",
-            ar: "أضنة كباب",
-            tr: "Adana Kebap",
-            desc: {
-              en: "Served with rice and salad.",
-              ar: "يقدم مع الأرز والسلطة.",
-              tr: "Pilav ve salata ile servis edilir."
-            },
-            price: "420₺"
-          },
-          {
-            en: "Mixed Grill",
-            ar: "مشاوي مشكلة",
-            tr: "Karışık Izgara",
-            desc: {
-              en: "Selection of grilled meats.",
-              ar: "تشكيلة من المشاوي.",
-              tr: "Karışık ızgara et çeşitleri."
-            },
-            price: "650₺"
-          }
+          ["Adana Kebab", "أضنة كباب", "Adana Kebap", "Served with rice and salad.", "يقدم مع الأرز والسلطة.", "Pilav ve salata ile.", "420₺"],
+          ["Mixed Grill", "مشاوي مشكلة", "Karışık Izgara", "Selection of grilled meats.", "تشكيلة من المشاوي.", "Karışık ızgara çeşitleri.", "650₺"],
+          ["Grilled Chicken", "دجاج مشوي", "Izgara Tavuk", "Served with rice, salad and sauce.", "يقدم مع الأرز والسلطة والصوص.", "Pilav, salata ve sos ile.", "360₺"]
         ]
       },
-
       {
         id: "desserts",
         names: { en: "Desserts", ar: "الحلويات", tr: "Tatlılar" },
         items: [
-          {
-            en: "Kunafa",
-            ar: "كنافة",
-            tr: "Künefe",
-            desc: {
-              en: "Traditional sweet cheese dessert.",
-              ar: "حلوى الجبنة التقليدية.",
-              tr: "Geleneksel peynirli tatlı."
-            },
-            price: "180₺"
-          },
-          {
-            en: "Baklava",
-            ar: "بقلاوة",
-            tr: "Baklava",
-            desc: {
-              en: "Turkish pistachio baklava.",
-              ar: "بقلاوة بالفستق.",
-              tr: "Fıstıklı baklava."
-            },
-            price: "170₺"
-          }
+          ["Kunafa", "كنافة", "Künefe", "Traditional sweet cheese dessert.", "حلوى الجبنة التقليدية.", "Geleneksel peynirli tatlı.", "180₺"],
+          ["Baklava", "بقلاوة", "Baklava", "Turkish pistachio baklava.", "بقلاوة بالفستق.", "Fıstıklı baklava.", "170₺"]
         ]
       },
-
       {
         id: "coffee",
         names: { en: "Coffee", ar: "القهوة", tr: "Kahve" },
         items: [
-          {
-            en: "Turkish Coffee",
-            ar: "قهوة تركية",
-            tr: "Türk Kahvesi",
-            desc: {
-              en: "Traditional Turkish coffee.",
-              ar: "قهوة تركية تقليدية.",
-              tr: "Geleneksel Türk kahvesi."
-            },
-            price: "90₺"
-          },
-          {
-            en: "Espresso",
-            ar: "إسبريسو",
-            tr: "Espresso",
-            desc: {
-              en: "Strong Italian coffee.",
-              ar: "قهوة إيطالية قوية.",
-              tr: "Yoğun İtalyan kahvesi."
-            },
-            price: "95₺"
-          }
+          ["Turkish Coffee", "قهوة تركية", "Türk Kahvesi", "Traditional Turkish coffee.", "قهوة تركية تقليدية.", "Geleneksel Türk kahvesi.", "90₺"],
+          ["Arabic Coffee", "قهوة عربية", "Arap Kahvesi", "Traditional Arabic coffee.", "قهوة عربية تقليدية.", "Geleneksel Arap kahvesi.", "100₺"],
+          ["Espresso", "إسبريسو", "Espresso", "Strong Italian coffee.", "قهوة إيطالية قوية.", "Yoğun İtalyan kahvesi.", "95₺"],
+          ["Latte", "لاتيه", "Latte", "Coffee with milk.", "قهوة مع الحليب.", "Sütlü kahve.", "120₺"]
         ]
       },
-
       {
         id: "drinks",
         names: { en: "Drinks", ar: "المشروبات", tr: "İçecekler" },
         items: [
-          {
-            en: "Soft Drinks",
-            ar: "مشروبات غازية",
-            tr: "Gazlı İçecekler",
-            desc: {
-              en: "Cola, Fanta, Sprite.",
-              ar: "كولا، فانتا، سبرايت.",
-              tr: "Kola, Fanta, Sprite."
-            },
-            price: "70₺"
-          },
-          {
-            en: "Fresh Orange Juice",
-            ar: "عصير برتقال طازج",
-            tr: "Taze Portakal Suyu",
-            desc: {
-              en: "Freshly squeezed orange juice.",
-              ar: "عصير برتقال طازج.",
-              tr: "Taze sıkılmış portakal suyu."
-            },
-            price: "120₺"
-          }
+          ["Soft Drinks", "مشروبات غازية", "Gazlı İçecekler", "Cola, Fanta, Sprite.", "كولا، فانتا، سبرايت.", "Kola, Fanta, Sprite.", "70₺"],
+          ["Fresh Orange Juice", "عصير برتقال طازج", "Taze Portakal Suyu", "Freshly squeezed orange juice.", "عصير برتقال طازج.", "Taze sıkılmış portakal suyu.", "120₺"],
+          ["Water", "ماء", "Su", "Still water.", "ماء.", "Su.", "35₺"]
         ]
       },
-
       {
         id: "shisha",
         names: { en: "Shisha", ar: "الأرجيلة", tr: "Nargile" },
         items: [
-          {
-            en: "Double Apple",
-            ar: "تفاحتين",
-            tr: "Çift Elma",
-            desc: {
-              en: "Classic flavor.",
-              ar: "النكهة الكلاسيكية.",
-              tr: "Klasik aroma."
-            },
-            price: "350₺"
-          },
-          {
-            en: "Love 66",
-            ar: "لوف 66",
-            tr: "Love 66",
-            desc: {
-              en: "Popular mixed flavor.",
-              ar: "نكهة مميزة ومشهورة.",
-              tr: "Popüler karışık aroma."
-            },
-            price: "380₺"
-          }
+          ["Double Apple", "تفاحتين", "Çift Elma", "Classic flavor.", "النكهة الكلاسيكية.", "Klasik aroma.", "350₺"],
+          ["Love 66", "لوف 66", "Love 66", "Popular mixed flavor.", "نكهة مميزة ومشهورة.", "Popüler karışık aroma.", "380₺"],
+          ["Mint", "نعنع", "Nane", "Fresh mint flavor.", "نكهة نعنع منعشة.", "Ferah nane aroması.", "350₺"]
+        ]
+      },
+      {
+        id: "alcohol",
+        names: { en: "Alcohol", ar: "مشروبات كحولية", tr: "Alkollü İçecekler" },
+        items: [
+          ["Beer", "بيرة", "Bira", "Ask staff for available brands.", "اسأل الموظف عن الأنواع المتوفرة.", "Mevcut markalar için personele sorunuz.", "Ask"],
+          ["Wine", "نبيذ", "Şarap", "Ask staff for available options.", "اسأل الموظف عن الخيارات المتوفرة.", "Seçenekler için personele sorunuz.", "Ask"]
         ]
       }
     ];
 
     let currentLang = "en";
 
+    function itemObj(arr) {
+      return {
+        en: arr[0], ar: arr[1], tr: arr[2],
+        desc: { en: arr[3], ar: arr[4], tr: arr[5] },
+        price: arr[6]
+      };
+    }
+
     function renderMenu() {
       const tabs = document.getElementById("tabs");
       const menu = document.getElementById("menu");
-
       tabs.innerHTML = "";
       menu.innerHTML = "";
 
-      menuData.forEach((section, index) => {
-        const btn = document.createElement("button");
-        btn.textContent = section.names[currentLang];
-        btn.onclick = () => showSection(section.id, btn);
+      menuData.forEach((sec, i) => {
+        const tab = document.createElement("button");
+        tab.textContent = sec.names[currentLang];
+        if (i === 0) tab.classList.add("active");
+        tab.onclick = () => showSection(sec.id, tab);
+        tabs.appendChild(tab);
 
-        if (index === 0) btn.classList.add("active");
-        tabs.appendChild(btn);
+        const section = document.createElement("section");
+        section.className = "section" + (i === 0 ? " active" : "");
+        section.id = sec.id;
 
-        const sectionDiv = document.createElement("div");
-        sectionDiv.className = "section" + (index === 0 ? " active" : "");
-        sectionDiv.id = section.id;
-
-        sectionDiv.innerHTML = `
-          <h2 class="section-title">${section.names[currentLang]}</h2>
-          <div class="items-grid">
-            ${section.items.map(item => `
-              <div class="item">
-                <div class="item-top">
-                  <div class="item-name">${item[currentLang]}</div>
-                  <div class="item-price">${item.price}</div>
-                </div>
-                <div class="item-desc">${item.desc[currentLang]}</div>
-              </div>
-            `).join("")}
+        const items = sec.items.map(itemObj).map(item => `
+          <div class="item">
+            <div class="item-top">
+              <div class="item-name">${item[currentLang]}</div>
+              <div class="price">${item.price}</div>
+            </div>
+            <div class="desc">${item.desc[currentLang]}</div>
           </div>
+        `).join("");
+
+        section.innerHTML = `
+          <h2>${sec.names[currentLang]}</h2>
+          <div class="grid">${items}</div>
         `;
 
-        menu.appendChild(sectionDiv);
+        menu.appendChild(section);
       });
+
+      searchItems();
     }
 
-    function showSection(id, button) {
-      document.querySelectorAll(".section").forEach(el => el.classList.remove("active"));
+    function showSection(id, btn) {
+      document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
       document.getElementById(id).classList.add("active");
-
-      document.querySelectorAll(".tabs button").forEach(el => el.classList.remove("active"));
-      button.classList.add("active");
+      document.querySelectorAll(".tabs button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
     }
 
     function setLang(lang, btn) {
       currentLang = lang;
-
       document.body.dir = lang === "ar" ? "rtl" : "ltr";
 
-      document.querySelectorAll(".lang-btn").forEach(el => el.classList.remove("active"));
+      document.querySelectorAll(".lang button").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
+
+      document.getElementById("mainTitle").textContent = ui[lang].title;
+      document.getElementById("mainSub").textContent = ui[lang].sub;
+      document.getElementById("searchInput").placeholder = ui[lang].search;
+      document.getElementById("contactTitle").textContent = ui[lang].contact;
+      document.getElementById("feedbackTitle").textContent = ui[lang].feedback;
+      document.getElementById("feedbackText").placeholder = ui[lang].placeholder;
+      document.getElementById("feedbackBtn").textContent = ui[lang].send;
 
       renderMenu();
     }
 
     function searchItems() {
       const term = document.getElementById("searchInput").value.toLowerCase();
-
       document.querySelectorAll(".item").forEach(item => {
-        const text = item.innerText.toLowerCase();
-        item.style.display = text.includes(term) ? "block" : "none";
+        item.style.display = item.innerText.toLowerCase().includes(term) ? "block" : "none";
       });
+    }
+
+    function sendFeedback() {
+      const text = document.getElementById("feedbackText").value || "Hello Al Diwaniya, I would like to send feedback about my experience.";
+      const url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(text);
+      window.open(url, "_blank");
     }
 
     renderMenu();
   </script>
-
 </body>
-  <div style="text-align:center;padding:20px;">
-  <img src="logo.jpeg" alt="Al Diwaniya" style="width:220px;max-width:90%;">
-</div>
 </html>

@@ -1,234 +1,649 @@
-انسخ هذا الكود كامل داخل `index.html` ثم اضغط **Commit changes**:
-
-```html
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Al Diwaniya Menu</title>
 
   <style>
+    :root {
+      --cream: #f5ead8;
+      --card: #fff8ee;
+      --brown: #3f2a1d;
+      --light-brown: #8b5e3c;
+      --gold: #b58a3b;
+      --shadow: rgba(63, 42, 29, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3eadb;
-      color: #4b2e1f;
+      background: var(--cream);
+      color: var(--brown);
     }
 
     header {
       text-align: center;
-      padding: 35px 20px;
-      background: #fff8ee;
+      padding: 28px 16px 18px;
+      background: var(--card);
+      border-bottom: 1px solid rgba(63, 42, 29, 0.12);
     }
 
-    .logo {
-      font-size: 38px;
+    .logo-img {
+      width: 190px;
+      max-width: 80%;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    .brand-title {
+      font-size: 28px;
       font-weight: bold;
-      color: #4b2e1f;
+      margin: 5px 0;
+      letter-spacing: 1px;
     }
 
-    .sub {
-      font-size: 18px;
-      margin-top: 8px;
-      color: #8b5e3c;
+    .brand-sub {
+      font-size: 14px;
+      color: var(--light-brown);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .lang-btn {
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--brown);
+      padding: 9px 15px;
+      border-radius: 22px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .lang-btn.active {
+      background: var(--brown);
+      color: var(--card);
+      border-color: var(--brown);
+    }
+
+    .search-wrap {
+      max-width: 750px;
+      margin: 16px auto 0;
+      padding: 0 16px;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 15px 18px;
+      border-radius: 28px;
+      border: 1px solid rgba(63, 42, 29, 0.2);
+      background: #fff;
+      font-size: 16px;
+      outline: none;
     }
 
     .tabs {
       display: flex;
       gap: 10px;
       overflow-x: auto;
-      padding: 15px;
-      background: #4b2e1f;
+      padding: 14px;
+      background: var(--brown);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .tabs button {
       border: none;
-      background: #fff8ee;
-      color: #4b2e1f;
-      padding: 12px 18px;
+      background: var(--card);
+      color: var(--brown);
+      padding: 11px 16px;
       border-radius: 25px;
       font-weight: bold;
       white-space: nowrap;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    }
+
+    .tabs button.active {
+      background: var(--gold);
+      color: #fff;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 22px 16px 80px;
     }
 
     .section {
       display: none;
-      padding: 25px 18px;
-      max-width: 800px;
-      margin: auto;
+      animation: fade 0.25s ease-in-out;
     }
 
     .section.active {
       display: block;
     }
 
-    h2 {
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-title {
       text-align: center;
       font-size: 30px;
-      margin-bottom: 25px;
+      margin: 20px 0 22px;
+      color: var(--brown);
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
     }
 
     .item {
-      background: #fff8ee;
-      margin-bottom: 15px;
-      padding: 18px;
+      background: var(--card);
+      padding: 17px;
       border-radius: 18px;
-      box-shadow: 0 5px 15px rgba(75, 46, 31, 0.12);
+      box-shadow: 0 7px 20px var(--shadow);
+      border: 1px solid rgba(63, 42, 29, 0.08);
     }
 
     .item-top {
       display: flex;
       justify-content: space-between;
-      gap: 15px;
-      align-items: center;
+      gap: 12px;
+      align-items: flex-start;
     }
 
-    .name {
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .price {
-      color: #8b3a1d;
-      font-weight: bold;
+    .item-name {
       font-size: 18px;
+      font-weight: bold;
+      line-height: 1.35;
     }
 
-    .desc {
+    .item-price {
+      font-size: 17px;
+      font-weight: bold;
+      color: #8b3a1d;
+      white-space: nowrap;
+    }
+
+    .item-desc {
       margin-top: 8px;
-      color: #7b5a45;
+      color: #76543f;
+      line-height: 1.55;
       font-size: 14px;
-      line-height: 1.6;
+    }
+
+    .whatsapp {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: #25d366;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 18px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+      z-index: 50;
     }
 
     footer {
       text-align: center;
-      padding: 30px 20px;
-      background: #4b2e1f;
-      color: #fff8ee;
-      margin-top: 30px;
+      padding: 35px 18px;
+      background: var(--brown);
+      color: var(--card);
+    }
+
+    footer span {
+      color: var(--gold);
+      font-weight: bold;
+    }
+
+    [dir="rtl"] .item-top {
+      flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .whatsapp {
+      right: auto;
+      left: 18px;
     }
   </style>
 </head>
 
 <body>
   <header>
-    <div class="logo">الديوانية</div>
-    <div class="sub">Al Diwaniya Restaurant & Cafe</div>
+    <img class="logo-img" src="logo.jpeg" alt="Al Diwaniya Logo" />
+    <div class="brand-title">Al Diwaniya</div>
+    <div class="brand-sub">Cafe & Restaurant</div>
+
+    <div class="top-actions">
+      <button class="lang-btn active" onclick="setLang('en', this)">English</button>
+      <button class="lang-btn" onclick="setLang('ar', this)">العربية</button>
+      <button class="lang-btn" onclick="setLang('tr', this)">Türkçe</button>
+    </div>
+
+    <div class="search-wrap">
+      <input id="searchInput" oninput="searchItems()" placeholder="Search in menu..." />
+    </div>
   </header>
 
-  <div class="tabs">
-    <button onclick="showSection('breakfast')">Breakfast</button>
-    <button onclick="showSection('drinks')">Drinks</button>
-    <button onclick="showSection('main')">Main Dishes</button>
-    <button onclick="showSection('dessert')">Desserts</button>
-    <button onclick="showSection('shisha')">Shisha</button>
-  </div>
+  <nav class="tabs" id="tabs"></nav>
 
-  <section id="breakfast" class="section active">
-    <h2>Breakfast / الفطور</h2>
+  <main id="menu"></main>
 
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Arabic Breakfast</div>
-        <div class="price">250₺</div>
-      </div>
-      <div class="desc">Cheese, olives, eggs, labneh, vegetables, bread.</div>
-    </div>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Menemen</div>
-        <div class="price">140₺</div>
-      </div>
-      <div class="desc">Turkish eggs with tomato and pepper.</div>
-    </div>
-  </section>
-
-  <section id="drinks" class="section">
-    <h2>Drinks / المشروبات</h2>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Turkish Tea</div>
-        <div class="price">40₺</div>
-      </div>
-      <div class="desc">Fresh Turkish tea.</div>
-    </div>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Arabic Coffee</div>
-        <div class="price">90₺</div>
-      </div>
-      <div class="desc">Traditional Arabic coffee.</div>
-    </div>
-  </section>
-
-  <section id="main" class="section">
-    <h2>Main Dishes / الأطباق الرئيسية</h2>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Grilled Chicken</div>
-        <div class="price">320₺</div>
-      </div>
-      <div class="desc">Served with rice, salad and sauce.</div>
-    </div>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Kebab Plate</div>
-        <div class="price">380₺</div>
-      </div>
-      <div class="desc">Grilled kebab with bread and salad.</div>
-    </div>
-  </section>
-
-  <section id="dessert" class="section">
-    <h2>Desserts / الحلويات</h2>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Kunafa</div>
-        <div class="price">160₺</div>
-      </div>
-      <div class="desc">Sweet cheese kunafa.</div>
-    </div>
-  </section>
-
-  <section id="shisha" class="section">
-    <h2>Shisha / الأرجيلة</h2>
-
-    <div class="item">
-      <div class="item-top">
-        <div class="name">Double Apple</div>
-        <div class="price">250₺</div>
-      </div>
-      <div class="desc">Classic shisha flavor.</div>
-    </div>
-  </section>
+  <a class="whatsapp" href="https://wa.me/905551234567" target="_blank">
+    WhatsApp
+  </a>
 
   <footer>
-    Al Diwaniya Restaurant & Cafe<br />
+    <span>Al Diwaniya</span><br />
+    Cafe & Restaurant<br />
     Istanbul, Turkey
   </footer>
 
   <script>
-    function showSection(id) {
-      document.querySelectorAll(".section").forEach(section => {
-        section.classList.remove("active");
+    const menuData = [
+      {
+        id: "breakfast",
+        names: { en: "Breakfast", ar: "الفطور", tr: "Kahvaltı" },
+        items: [
+          {
+            en: "Arabic Breakfast",
+            ar: "فطور عربي",
+            tr: "Arap Kahvaltısı",
+            desc: {
+              en: "Cheese, olives, eggs, labneh, vegetables and bread.",
+              ar: "جبنة، زيتون، بيض، لبنة، خضار وخبز.",
+              tr: "Peynir, zeytin, yumurta, labne, sebze ve ekmek."
+            },
+            price: "250₺"
+          },
+          {
+            en: "Turkish Breakfast",
+            ar: "فطور تركي",
+            tr: "Türk Kahvaltısı",
+            desc: {
+              en: "Traditional Turkish breakfast plate.",
+              ar: "طبق فطور تركي تقليدي.",
+              tr: "Geleneksel Türk kahvaltı tabağı."
+            },
+            price: "280₺"
+          },
+          {
+            en: "Menemen",
+            ar: "مينيمن",
+            tr: "Menemen",
+            desc: {
+              en: "Turkish eggs with tomato and pepper.",
+              ar: "بيض تركي مع الطماطم والفلفل.",
+              tr: "Domates ve biberli Türk usulü yumurta."
+            },
+            price: "140₺"
+          },
+          {
+            en: "Omelette",
+            ar: "أومليت",
+            tr: "Omlet",
+            desc: {
+              en: "Plain or with cheese.",
+              ar: "سادة أو مع الجبنة.",
+              tr: "Sade veya peynirli."
+            },
+            price: "130₺"
+          }
+        ]
+      },
+      {
+        id: "hot_starters",
+        names: { en: "Hot Starters", ar: "مقبلات ساخنة", tr: "Sıcak Başlangıçlar" },
+        items: [
+          {
+            en: "French Fries",
+            ar: "بطاطا مقلية",
+            tr: "Patates Kızartması",
+            desc: { en: "Crispy fried potatoes.", ar: "بطاطا مقلية مقرمشة.", tr: "Çıtır patates kızartması." },
+            price: "110₺"
+          },
+          {
+            en: "Cheese Rolls",
+            ar: "رولات الجبنة",
+            tr: "Peynirli Sigara Böreği",
+            desc: { en: "Fried pastry with cheese.", ar: "عجينة مقلية محشوة بالجبنة.", tr: "Peynir dolgulu kızarmış börek." },
+            price: "150₺"
+          },
+          {
+            en: "Chicken Wings",
+            ar: "أجنحة دجاج",
+            tr: "Tavuk Kanat",
+            desc: { en: "Served with sauce.", ar: "تقدم مع الصوص.", tr: "Sos ile servis edilir." },
+            price: "220₺"
+          }
+        ]
+      },
+      {
+        id: "cold_meze",
+        names: { en: "Cold Meze", ar: "مقبلات باردة", tr: "Soğuk Mezeler" },
+        items: [
+          {
+            en: "Hummus",
+            ar: "حمص",
+            tr: "Humus",
+            desc: { en: "Classic chickpea dip.", ar: "حمص كلاسيكي.", tr: "Klasik nohut mezesi." },
+            price: "120₺"
+          },
+          {
+            en: "Mutabbal",
+            ar: "متبل",
+            tr: "Patlıcan Ezmesi",
+            desc: { en: "Eggplant with tahini.", ar: "باذنجان مع الطحينة.", tr: "Tahinli patlıcan ezmesi." },
+            price: "130₺"
+          },
+          {
+            en: "Labneh",
+            ar: "لبنة",
+            tr: "Labne",
+            desc: { en: "Creamy strained yogurt.", ar: "لبنة كريمية.", tr: "Süzme yoğurt." },
+            price: "110₺"
+          }
+        ]
+      },
+            {
+        id: "burgers",
+        names: { en: "Burgers", ar: "البرغر", tr: "Burgerler" },
+        items: [
+          {
+            en: "Classic Burger",
+            ar: "برغر كلاسيك",
+            tr: "Klasik Burger",
+            desc: {
+              en: "Beef burger with fries.",
+              ar: "برغر لحم مع بطاطا.",
+              tr: "Patates ile dana burger."
+            },
+            price: "320₺"
+          },
+          {
+            en: "Chicken Burger",
+            ar: "برغر دجاج",
+            tr: "Tavuk Burger",
+            desc: {
+              en: "Crispy chicken burger.",
+              ar: "برغر دجاج مقرمش.",
+              tr: "Çıtır tavuk burger."
+            },
+            price: "290₺"
+          }
+        ]
+      },
+
+      {
+        id: "pizza",
+        names: { en: "Pizza & Pide", ar: "بيتزا وبيدا", tr: "Pizza ve Pide" },
+        items: [
+          {
+            en: "Margherita Pizza",
+            ar: "بيتزا مارغريتا",
+            tr: "Margherita Pizza",
+            desc: {
+              en: "Mozzarella and tomato sauce.",
+              ar: "جبنة موزاريلا وصلصة طماطم.",
+              tr: "Mozzarella ve domates sosu."
+            },
+            price: "340₺"
+          },
+          {
+            en: "Turkish Pide",
+            ar: "بيدا تركية",
+            tr: "Türk Pidesi",
+            desc: {
+              en: "Traditional Turkish pide.",
+              ar: "بيدا تركية تقليدية.",
+              tr: "Geleneksel Türk pidesi."
+            },
+            price: "300₺"
+          }
+        ]
+      },
+
+      {
+        id: "kebab",
+        names: { en: "Kebabs", ar: "المشاوي والكباب", tr: "Kebaplar" },
+        items: [
+          {
+            en: "Adana Kebab",
+            ar: "أضنة كباب",
+            tr: "Adana Kebap",
+            desc: {
+              en: "Served with rice and salad.",
+              ar: "يقدم مع الأرز والسلطة.",
+              tr: "Pilav ve salata ile servis edilir."
+            },
+            price: "420₺"
+          },
+          {
+            en: "Mixed Grill",
+            ar: "مشاوي مشكلة",
+            tr: "Karışık Izgara",
+            desc: {
+              en: "Selection of grilled meats.",
+              ar: "تشكيلة من المشاوي.",
+              tr: "Karışık ızgara et çeşitleri."
+            },
+            price: "650₺"
+          }
+        ]
+      },
+
+      {
+        id: "desserts",
+        names: { en: "Desserts", ar: "الحلويات", tr: "Tatlılar" },
+        items: [
+          {
+            en: "Kunafa",
+            ar: "كنافة",
+            tr: "Künefe",
+            desc: {
+              en: "Traditional sweet cheese dessert.",
+              ar: "حلوى الجبنة التقليدية.",
+              tr: "Geleneksel peynirli tatlı."
+            },
+            price: "180₺"
+          },
+          {
+            en: "Baklava",
+            ar: "بقلاوة",
+            tr: "Baklava",
+            desc: {
+              en: "Turkish pistachio baklava.",
+              ar: "بقلاوة بالفستق.",
+              tr: "Fıstıklı baklava."
+            },
+            price: "170₺"
+          }
+        ]
+      },
+
+      {
+        id: "coffee",
+        names: { en: "Coffee", ar: "القهوة", tr: "Kahve" },
+        items: [
+          {
+            en: "Turkish Coffee",
+            ar: "قهوة تركية",
+            tr: "Türk Kahvesi",
+            desc: {
+              en: "Traditional Turkish coffee.",
+              ar: "قهوة تركية تقليدية.",
+              tr: "Geleneksel Türk kahvesi."
+            },
+            price: "90₺"
+          },
+          {
+            en: "Espresso",
+            ar: "إسبريسو",
+            tr: "Espresso",
+            desc: {
+              en: "Strong Italian coffee.",
+              ar: "قهوة إيطالية قوية.",
+              tr: "Yoğun İtalyan kahvesi."
+            },
+            price: "95₺"
+          }
+        ]
+      },
+
+      {
+        id: "drinks",
+        names: { en: "Drinks", ar: "المشروبات", tr: "İçecekler" },
+        items: [
+          {
+            en: "Soft Drinks",
+            ar: "مشروبات غازية",
+            tr: "Gazlı İçecekler",
+            desc: {
+              en: "Cola, Fanta, Sprite.",
+              ar: "كولا، فانتا، سبرايت.",
+              tr: "Kola, Fanta, Sprite."
+            },
+            price: "70₺"
+          },
+          {
+            en: "Fresh Orange Juice",
+            ar: "عصير برتقال طازج",
+            tr: "Taze Portakal Suyu",
+            desc: {
+              en: "Freshly squeezed orange juice.",
+              ar: "عصير برتقال طازج.",
+              tr: "Taze sıkılmış portakal suyu."
+            },
+            price: "120₺"
+          }
+        ]
+      },
+
+      {
+        id: "shisha",
+        names: { en: "Shisha", ar: "الأرجيلة", tr: "Nargile" },
+        items: [
+          {
+            en: "Double Apple",
+            ar: "تفاحتين",
+            tr: "Çift Elma",
+            desc: {
+              en: "Classic flavor.",
+              ar: "النكهة الكلاسيكية.",
+              tr: "Klasik aroma."
+            },
+            price: "350₺"
+          },
+          {
+            en: "Love 66",
+            ar: "لوف 66",
+            tr: "Love 66",
+            desc: {
+              en: "Popular mixed flavor.",
+              ar: "نكهة مميزة ومشهورة.",
+              tr: "Popüler karışık aroma."
+            },
+            price: "380₺"
+          }
+        ]
+      }
+    ];
+
+    let currentLang = "en";
+
+    function renderMenu() {
+      const tabs = document.getElementById("tabs");
+      const menu = document.getElementById("menu");
+
+      tabs.innerHTML = "";
+      menu.innerHTML = "";
+
+      menuData.forEach((section, index) => {
+        const btn = document.createElement("button");
+        btn.textContent = section.names[currentLang];
+        btn.onclick = () => showSection(section.id, btn);
+
+        if (index === 0) btn.classList.add("active");
+        tabs.appendChild(btn);
+
+        const sectionDiv = document.createElement("div");
+        sectionDiv.className = "section" + (index === 0 ? " active" : "");
+        sectionDiv.id = section.id;
+
+        sectionDiv.innerHTML = `
+          <h2 class="section-title">${section.names[currentLang]}</h2>
+          <div class="items-grid">
+            ${section.items.map(item => `
+              <div class="item">
+                <div class="item-top">
+                  <div class="item-name">${item[currentLang]}</div>
+                  <div class="item-price">${item.price}</div>
+                </div>
+                <div class="item-desc">${item.desc[currentLang]}</div>
+              </div>
+            `).join("")}
+          </div>
+        `;
+
+        menu.appendChild(sectionDiv);
       });
-      document.getElementById(id).classList.add("active");
     }
+
+    function showSection(id, button) {
+      document.querySelectorAll(".section").forEach(el => el.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+
+      document.querySelectorAll(".tabs button").forEach(el => el.classList.remove("active"));
+      button.classList.add("active");
+    }
+
+    function setLang(lang, btn) {
+      currentLang = lang;
+
+      document.body.dir = lang === "ar" ? "rtl" : "ltr";
+
+      document.querySelectorAll(".lang-btn").forEach(el => el.classList.remove("active"));
+      btn.classList.add("active");
+
+      renderMenu();
+    }
+
+    function searchItems() {
+      const term = document.getElementById("searchInput").value.toLowerCase();
+
+      document.querySelectorAll(".item").forEach(item => {
+        const text = item.innerText.toLowerCase();
+        item.style.display = text.includes(term) ? "block" : "none";
+      });
+    }
+
+    renderMenu();
   </script>
+
 </body>
 </html>
-```
-
-بعد الحفظ اضغط **Commit changes**.
